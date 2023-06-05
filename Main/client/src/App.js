@@ -1,25 +1,85 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+import Header from './components/Header';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import About from './pages/About';
+import Collection from './pages/Collection';
+import Contact from './pages/Contact';
+import Home from './pages/Home'; 
+import Login from './pages/Login';
+import Reservations from './pages/Reservations';
+import SignUp from './pages/SignUp';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+export default function App() {
+  const [currentPage, setCurrentPage] = useState('Home');
+
+  // This method is checking to see what the value of 'currentPage' is and depending on the value, 
+  // will return the corrresponding component to render
+const renderPage = () => {
+  if (currentPage === 'Home') {
+    return <Home />
+  }
+  if (currentPage === 'About') {
+    return <About />
+  }
+  if (currentPage === 'Collection') {
+    return <Collection />
+  }
+  if (currentPage === 'Contact') {
+    return <Contact />
+  }
+  if (currentPage === 'Login') {
+    return <Login />
+  }
+  if (currentPage === 'Reservations') {
+    return <Reservations />
+  } 
+  if (currentPage === 'SignUp') {
+    return <SignUp />
+  }
+};
+
+const handlePageChange = (page) => setCurrentPage(page);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='flex-row justify-center'>
+      <div className='col-12 col-md-10 my-3'>
+      <Header />
+      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
+      {renderPage()}
+      <Footer />
+      </div>
     </div>
   );
-}
-
-export default App;
+};
