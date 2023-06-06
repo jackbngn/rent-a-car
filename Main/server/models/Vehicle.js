@@ -22,6 +22,25 @@ const vehicleSchema = new Schema({
         type: String,
         required: true,
     },
+    numberOfSeats: {
+        type: Number,
+        required: true,
+    },
+    // Manual or Automatic
+    transmission: {
+        type: String,
+        required: true,
+    },
+    // Petrol or Electric
+    engine: {
+        type: String,
+        required: true,
+    },
+    // coupe or sedan
+    class: {
+        type: String,
+        required: true,
+    },
     image: {
         type: String,
         required: true,

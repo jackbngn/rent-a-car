@@ -47,7 +47,7 @@ const resolvers = {
         // ADD a reservation
         addVehicle: async (parent, { vehicleInput }, context) => {
             if (context.vehicle) {
-                const { make, model, year, license, color, image } = vehicleInput;
+                const { make, model, year, license, color, numberofSeats, transmission, engine, vehicleClass, image } = vehicleInput;
                 const vehicle = await Vehicle.findByIdAndUpdate(
                     { _id: context.vehicle._id },
                     { $push: {savedVehicles: { vehicleInput }}},
