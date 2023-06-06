@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import React, {useState} from 'react';
-=======
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/Navbar';
@@ -9,7 +6,6 @@ import About from './pages/About';
 import Reservation from './pages/Reservations';
 import Collection from './pages/Collection';
 import Contact from './pages/Contact';
->>>>>>> c7cecd9a38c72459fc35ff6cb52d5e6a717891e0
 import './App.css';
 import {
   ApolloClient,
@@ -20,16 +16,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import About from './pages/About';
-import Collection from './pages/Collection';
-import Contact from './pages/Contact';
-import Home from './pages/Home'; 
-import Login from './pages/Login';
-import Reservations from './pages/Reservations';
-import SignUp from './pages/SignUp';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -52,7 +38,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default function App() {
+/* export default function App() {
   const [currentPage, setCurrentPage] = useState('Home');
 
   // This method is checking to see what the value of 'currentPage' is and depending on the value, 
@@ -81,21 +67,8 @@ const renderPage = () => {
   }
 };
 
-const handlePageChange = (page) => setCurrentPage(page);
+const handlePageChange = (page) => setCurrentPage(page); */
 
-<<<<<<< HEAD
-  return (
-    <div className='flex-row justify-center'>
-      <div className='col-12 col-md-10 my-3'>
-      <Header />
-      <Navbar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {renderPage()}
-      <Footer />
-      </div>
-    </div>
-  );
-};
-=======
 function App() {
 	return (
 		<Router>
@@ -114,4 +87,3 @@ function App() {
 }
 
 export default App;
->>>>>>> c7cecd9a38c72459fc35ff6cb52d5e6a717891e0
