@@ -111,3 +111,7 @@
   -webkit-text-fill-color: transparent;
   max-width: max-content;
 }
+
+.aboutPage {
+  margin-bottom: 100px;
+}
