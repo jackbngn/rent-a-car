@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Header = () => {
+const SignUp = () => {
     return (
         <main>
             <div className = 'flex-row justify-center'>
                 <div className='col-12 col-md-10 my-3'>
-                    Header Section
+                    Sign Up Page
                 </div>
             </div>
         </main>
     )
 }
 
-export default Header;
+export default SignUp;

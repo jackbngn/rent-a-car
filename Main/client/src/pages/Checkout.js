@@ -6,7 +6,6 @@ export default function Checkout() {
             <div className="shadow-md rounded-lg p-4">
                 <h2 className='text-dark text-2xl font-semibold'>Secure Payment</h2>
                 <div className='pt-4'></div>
-
                 <span className='font-semibold text-lg'>Cardholder's Name</span>
                 <input type='text' className='bg-gray-200 px-2 py-2 border border-gray-500 rounded w-full' name='' id='' />
 
