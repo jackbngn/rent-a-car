@@ -37,7 +37,7 @@ const vehicleSchema = new Schema({
         required: true,
     },
     // coupe or sedan
-    class: {
+    vehicleClass: {
         type: String,
         required: true,
     },
