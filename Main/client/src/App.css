@@ -41,7 +41,7 @@
 .column {
   float: left;
   width: 33.3%;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   padding: 0 8px;
 }
 
@@ -51,6 +51,12 @@
     width: 100%;
     display: block;
   }
+}
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Add some shadows to create a card effect */
@@ -88,4 +94,32 @@
 
 .button:hover {
   background-color: #555;
+}
+
+.team {
+  text-align: center;
+  font-size: 70px;
+  font-weight: 600;
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(13, 8, 96, 1) 0%,
+    rgba(9, 9, 121, 1) 21%,
+    rgba(6, 84, 170, 1) 51%,
+    rgba(0, 255, 113, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  max-width: max-content;
+}
+
+.aboutPage {
+  margin-bottom: 100px;
+}
+
+.my-select-box {
+  display:grid !important;
+  width:100%;
+  overflow:hidden;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;  
 }
