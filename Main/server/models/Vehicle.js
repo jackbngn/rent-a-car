@@ -36,7 +36,7 @@ const vehicleSchema = new Schema({
         type: String,
         required: true,
     },
-    // coupe or sedan
+    // coupe, sedan, minivan, suv, etc.
     vehicleClass: {
         type: String,
         required: true,
