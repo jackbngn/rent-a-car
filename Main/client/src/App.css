@@ -115,3 +115,11 @@
 .aboutPage {
   margin-bottom: 100px;
 }
+
+.my-select-box {
+  display:grid !important;
+  width:100%;
+  overflow:hidden;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;  
+}
