@@ -7,6 +7,7 @@ import About from './pages/About';
 import Reservation from './pages/Reservations';
 import Collection from './pages/Collection';
 import Contact from './pages/Contact';
+import Checkout from './pages/Checkout';
 import './App.css';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 					<Route path="/reservation" element={<Reservation />} />
 					<Route path="/collections" element={<Collection />} />
 					<Route path="/contact" element={<Contact />} />
+					<Route path="/checkout" element={<Checkout />} />
 				</Routes>
 			</div>
 		</Router>
