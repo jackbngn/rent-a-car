@@ -8,6 +8,7 @@ import Reservation from './pages/Reservations';
 import Collection from './pages/Collection/Collection';
 import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
+import Login from './pages/Login'
 import './App.css';
 import {
 	ApolloClient,
@@ -83,6 +84,7 @@ function App() {
 					<Route path="/collections" element={<Collection />} />
 					<Route path="/contact" element={<Contact />} />
 					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/login" element={<Login />} />
 				</Routes>
 				<Footer />
 			</div>
