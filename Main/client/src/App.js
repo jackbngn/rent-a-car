@@ -5,7 +5,7 @@ import NavBar from './components/NavBar/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
 import Reservation from './pages/Reservations';
-import Collection from './pages/Collection';
+import Collection from './pages/Collection/Collection';
 import Contact from './pages/Contact';
 import './App.css';
 import {
