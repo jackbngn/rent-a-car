@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -70,7 +71,8 @@
 }
 
 /* Clear floats */
-.container::after, .row::after {
+.container::after,
+.row::after {
   content: "";
   clear: both;
   display: table;
@@ -98,15 +100,14 @@
 
 .team {
   text-align: center;
+  margin: auto;
   font-size: 70px;
   font-weight: 600;
-  background: -webkit-linear-gradient(
-    90deg,
-    rgba(13, 8, 96, 1) 0%,
-    rgba(9, 9, 121, 1) 21%,
-    rgba(6, 84, 170, 1) 51%,
-    rgba(0, 255, 113, 1) 100%
-  );
+  background: -webkit-linear-gradient(90deg,
+      rgba(13, 8, 96, 1) 0%,
+      rgba(9, 9, 121, 1) 21%,
+      rgba(6, 84, 170, 1) 51%,
+      rgba(0, 255, 113, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   max-width: max-content;
@@ -117,9 +118,9 @@
 }
 
 .my-select-box {
-  display:grid !important;
-  width:100%;
-  overflow:hidden;
+  display: grid !important;
+  width: 100%;
+  overflow: hidden;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;  
+  grid-template-rows: 1fr 1fr 1fr;
 }
