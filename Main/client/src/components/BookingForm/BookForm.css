@@ -1,0 +1,23 @@
+.bookForm {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 auto;
+	padding: 100px;
+	background-color: rgb(255, 255, 255);
+	margin-bottom: 100px;
+}
+
+.formBox {
+	background-color: rgba(255, 255, 255, 0.349);
+	padding: 80px;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+	background-image: url('pattern.jpg');
+	background-size: 40%;
+}
+
+form {
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+}
