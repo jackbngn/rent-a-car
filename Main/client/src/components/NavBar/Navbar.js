@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import Logo from './logo2.png';
+import Auth from '../../utils/auth';
 
 export default function NavBar() {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isSignedIn, setIsSignedIn] = useState(true);
+	const [username, setUsername] = useState('');
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
@@ -12,6 +15,16 @@ export default function NavBar() {
 
 	const closeMenu = () => {
 		setIsOpen(false);
+	};
+
+	const handleSignIn = (username) => {
+		setIsSignedIn(true);
+		setUsername('username');
+	};
+
+	const handleLogout = () => {
+		setIsSignedIn(false);
+		setUsername('');
 	};
 
 	return (
@@ -43,16 +56,29 @@ export default function NavBar() {
 							Contact
 						</Link>
 					</li>
-					<li>
-						<Link to="/signup" onClick={closeMenu}>
-							Sign Up
-						</Link>
-					</li>
-					<li>
-						<Link to="/login" onClick={closeMenu}>
-							Login
-						</Link>
-					</li>
+					{Auth.loggedIn() ? (
+						<li
+							onClick={() => {
+								Auth.logout();
+								closeMenu();
+							}}>
+							{' '}
+							Logout
+						</li>
+					) : (
+						<>
+							<li>
+								<Link to="/login" onClick={closeMenu}>
+									Sign Up
+								</Link>
+							</li>
+							<li>
+								<Link to="/login" onClick={closeMenu}>
+									Login
+								</Link>
+							</li>
+						</>
+					)}
 				</ul>
 			</div>
 
@@ -82,14 +108,23 @@ export default function NavBar() {
 				</ul>
 			</div>
 
-			<div className="loginSignUp">
-				<button className="signUp">
-					<Link to="/signUp">Sign Up</Link>
-				</button>
-				<button className="login">
-					<Link to="/login">Login</Link>
-				</button>
-			</div>
+			{Auth.loggedIn() ? (
+				<div className="userSection">
+					<div className="username">{username}</div>
+					<button className="logout" onClick={Auth.logout}>
+						Logout
+					</button>
+				</div>
+			) : (
+				<div className="loginSignUp">
+					<button className="signUp">
+						<Link to="/login">Sign Up</Link>
+					</button>
+					<button className="login">
+						<Link to="/login">Login</Link>
+					</button>
+				</div>
+			)}
 
 			<div
 				className={`burger_menu ${isOpen ? 'open' : ''}`}

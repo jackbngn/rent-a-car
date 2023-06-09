@@ -8,8 +8,8 @@ import Reservation from './pages/Reservations';
 import Collection from './pages/Collection/Collection';
 import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
-import Login from './pages/Login'
-import './App.css';
+import Login from './pages/Login';
+
 import {
 	ApolloClient,
 	InMemoryCache,
@@ -21,7 +21,7 @@ import Footer from './components/FooterSection/Footer';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const httpLink = createHttpLink({
-	uri: '/graphql',
+	uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -74,21 +74,23 @@ const handlePageChange = (page) => setCurrentPage(page); */
 
 function App() {
 	return (
-		<Router>
-			<div>
-				<NavBar />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/reservation" element={<Reservation />} />
-					<Route path="/collections" element={<Collection />} />
-					<Route path="/contact" element={<Contact />} />
-					<Route path="/checkout" element={<Checkout />} />
-					<Route path="/login" element={<Login />} />
-				</Routes>
-				<Footer />
-			</div>
-		</Router>
+		<ApolloProvider client={client}>
+			<Router>
+				<div>
+					<NavBar />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/reservation" element={<Reservation />} />
+						<Route path="/collections" element={<Collection />} />
+						<Route path="/contact" element={<Contact />} />
+						<Route path="/checkout" element={<Checkout />} />
+						<Route path="/login" element={<Login />} />
+					</Routes>
+					<Footer />
+				</div>
+			</Router>
+		</ApolloProvider>
 	);
 }
 
