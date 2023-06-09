@@ -25,6 +25,15 @@ const resolvers = {
 				throw new Error('Failed to fetch users from the database');
 			}
 		},
+		vehicles: async () => {
+			try {
+				const vehicles = await Vehicle.find();
+				return vehicles;
+			} catch (error) {
+				console.log(error);
+				throw new Error('Failed to fetch vehicles');
+			}
+		},
 	},
 
 	Mutation: {
