@@ -9,8 +9,12 @@ import Collection from './pages/Collection/Collection';
 import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
+<<<<<<< HEAD
 import Success from './pages/Success';
 import './App.css';
+=======
+
+>>>>>>> ac080d1911178fdc7669c69baee39fc84871637d
 import {
 	ApolloClient,
 	InMemoryCache,
@@ -22,7 +26,7 @@ import Footer from './components/FooterSection/Footer';
 // import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const httpLink = createHttpLink({
-	uri: '/graphql',
+	uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {

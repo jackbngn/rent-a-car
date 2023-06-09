@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './WhyChooseUs.css';
 import Image1 from './image1.jpg';
 import Image2 from './image2.jpg';
@@ -8,6 +10,9 @@ export default function WhyChooseUs() {
 	return (
 		<section className="whyChooseUs">
 			<div className="whyChooseUsContainer">
+				<h1 className="flex justify-center font-bold text-5xl mb-12  ">
+					Why Choose Fleet?
+				</h1>
 				<div className="whyChooseUsItem">
 					<div className="whyChooseUsImage">
 						<img src={Image1} alt="Image 1" />
@@ -27,6 +32,9 @@ export default function WhyChooseUs() {
 							cars to spacious SUVs. We have a vehicle for every need and
 							budget, ensuring you find the perfect option for your trip.
 						</p>
+						<Link to="/collections">
+							<button className="collectionButton mt-6 ">See Collection</button>
+						</Link>
 					</div>
 					<div className="whyChooseUsImage">
 						<img src={Image3} alt="Image 2" />

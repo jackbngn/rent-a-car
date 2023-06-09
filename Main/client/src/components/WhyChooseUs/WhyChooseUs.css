@@ -22,7 +22,7 @@
 	flex: 1;
 }
 .whyChooseUsImage img {
-	width: 400px;
+	width: 600px;
 	height: 300px;
 	object-fit: cover;
 }
@@ -37,4 +37,13 @@
 	color: #000;
 	line-height: 1.5;
 	font-family: 'Poppins', sans-serif;
+}
+
+.collectionButton {
+	background-color: #9ca5ec;
+	color: white;
+	border-radius: 5px;
+	font-size: 24px;
+	font-weight: 500;
+	padding: 10px;
 }

@@ -1,3 +1,4 @@
-const Vehicle = require ('./Vehicle');
+const Vehicle = require('./Vehicle');
+const User = require('./userAccount');
 
-module.exports = { Vehicle };
+module.exports = { Vehicle, User };
