@@ -20,6 +20,7 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
+        reservations: [Vehicle]
     }
 
     type Auth {
@@ -30,6 +31,10 @@ const typeDefs = gql`
     type Query {
         me: User
         vehicles: [Vehicle]
+    }
+
+    input savedVehicleInfo {
+        
     }
 
     type Mutation {
