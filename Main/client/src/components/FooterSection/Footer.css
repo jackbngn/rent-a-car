@@ -1,6 +1,9 @@
 .footer {
+	position: absolute;
+	width: 100%;
 	background-color: #f7f7f7;
 	padding: 40px 0;
+	height: 10rem
 }
 
 .footerContent {
