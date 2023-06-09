@@ -34,9 +34,8 @@ const typeDefs = gql`
 
     type Mutation {
         login(email: String!, password: String!): Auth
-        addReservation(make: String!, model: String! year: Int!, license: String!, color: String!, 
-            numberofSeats: Int!, transmission: String!, engine: String! vehicleClass: String! image: String!)
-        deleteReservation(license: ID!): Vehicle
+        addVehicle(make: String!, model: String! year: Int!, license: String!, color: String!, numberofSeats: Int!, transmission: String!, engine: String! vehicleClass: String! image: String!): User
+        removeVehicle(license: ID!): Vehicle
     }
 `;
 
