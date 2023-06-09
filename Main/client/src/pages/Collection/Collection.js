@@ -10,7 +10,7 @@ export default function Collection() {
 			The Ultimate Collection
 		</div>
 		<hr className='h-px my-2 mr-96 ml-80 bg-gray-300 border-0 dark:bg-gray-700'></hr>
-		<div className="container grid grid-cols-3 gap-4">
+		<div className="container grid lg:grid-cols-3 gap-4">
 
 			<div className=' bg-white border-2 border-slate-300 rounded shadow-md ml-2'>
 				<div className='ml-4 mt-3'>
