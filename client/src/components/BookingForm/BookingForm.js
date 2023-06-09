@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { FaCar } from 'react-icons/fa';
 import { MdPlace } from 'react-icons/md';
 
+import { VEHICLES } from '../../utils/queries';
 import './BookForm.css';
 import Modal from '../Modal/Modal';
 import NissanGtr from '../../images/Car/nissanGTR.png';
+import { useQuery } from '@apollo/client';
 
 export default function BookingForm() {
 	//hard coded car data
@@ -23,6 +25,7 @@ export default function BookingForm() {
 			image: NissanGtr,
 		},
 	];
+
 	// useState to set open and close for modal
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedData, setSelectedData] = useState({
