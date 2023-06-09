@@ -71,8 +71,19 @@ a {
 	margin: 10px;
 }
 
+.logout {
+	padding: 12px 25px;
+	background-color: #9ca5ec; /* Color for now */
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-left: 10px;
+	font-size: 24px;
+}
+
 .burger_menu {
-	position: fixed;
+	position: absolute;
 	top: 20px;
 	right: 20px;
 	display: flex;

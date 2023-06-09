@@ -22,7 +22,7 @@
 	flex-direction: column;
 	font-family: Popoins, sans-serif;
 	font-weight: 700;
-	z-index: 3;
+
 	max-width: 55rem;
 
 	color: whitesmoke;
@@ -36,7 +36,7 @@
 	position: absolute;
 	right: 0;
 	max-width: 45%;
-	z-index: 2;
+
 	object-fit: cover;
 }
 .bookButton {
@@ -46,6 +46,14 @@
 	font-weight: 600;
 }
 
+.bookButton:hover {
+	background-color: #747bb1;
+}
+
+.bookButton:active {
+	color: #9ca5ec;
+}
+
 .learnButton {
 	background-color: black;
 	color: white;
@@ -53,8 +61,11 @@
 	font-size: 24px;
 }
 
+.learnButton:hover {
+	background-color: rgb(27, 27, 27);
+}
+
 .actionButton {
-	z-index: 3;
 	width: 50%;
 }
 @media screen and (max-width: 1140px) {
