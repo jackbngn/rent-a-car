@@ -5,6 +5,13 @@ import { MdPlace } from 'react-icons/md';
 import './BookForm.css';
 import Modal from '../Modal/Modal';
 import NissanGtr from '../../images/Car/nissanGTR.png';
+import Camaro from '../../images/Car/Camaro.png';
+import Honda from '../../images/Car/HondaAccord.png';
+import Hyundai from '../../images/Car/Hyundai.png';
+import Mazda from '../../images/Car/Mazda.png';
+import Porsche from '../../images/Car/Porsche.png';
+import Tesla from '../../images/Car/Tesla.png';
+import Toyota from '../../images/Car/Toyota.png';
 
 export default function BookingForm() {
 	//hard coded car data
