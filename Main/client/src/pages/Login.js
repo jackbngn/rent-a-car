@@ -5,9 +5,11 @@ import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 export default function Login() {
-	const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+	const [userFormData, setUserFormData] = useState({
+		email: '',
+		password: '',
+	});
 	const [formErrors, setFormErrors] = useState({});
-
 	const [loginUser, { error }] = useMutation(LOGIN);
 
 	const handleInputChange = (event) => {
@@ -34,6 +36,7 @@ export default function Login() {
 			Auth.login(token);
 		} catch (err) {
 			console.log(err);
+			setFormErrors({ message: 'Invalid email or password' });
 		}
 	};
 
@@ -45,20 +48,23 @@ export default function Login() {
 						<h1 className="text-xl leading-tight tracking-tight text-slate-400 md:text-2xl">
 							Login
 						</h1>
+						{formErrors.message && (
+							<div className="text-red-600 mb-4">{formErrors.message}</div>
+						)}
 						<form
 							onSubmit={handleFormSubmit}
 							className="space-y-4 md:space-y-6">
 							<div>
 								<label
-									htmlFor="username"
+									htmlFor="email"
 									className="block mb-3 text-sm font-medium text-slate-950">
-									Username
+									Email
 								</label>
 								<input
 									type="text"
-									name="username"
-									id="username"
-									value={userFormData.username}
+									name="email"
+									id="email"
+									value={userFormData.email}
 									onChange={handleInputChange}
 									className="bg-zinc-100 border border-zinc-500 text-zinc-950 sm:text-sm rounded-lg focus:ring-red-700 focus:border-red-700 block w-full p-2.5"
 								/>
