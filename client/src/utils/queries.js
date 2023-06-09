@@ -9,3 +9,13 @@ export const GET_ME = gql`
 		}
 	}
 `;
+
+export const VEHICLES = gql`
+	query getVehicles {
+		vehicles {
+			make
+			model
+			image
+		}
+	}
+`;
