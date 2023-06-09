@@ -1,0 +1,91 @@
+[
+	{
+		"make": "Honda",
+		"model": "Accord",
+		"year": 2013,
+		"license": "6PWA542",
+		"color": "White",
+		"numberOfSeats": 5,
+		"transmission": "Automatic",
+		"engine": "Petrol",
+		"vehicleClass": "Sedan"
+	},
+	{
+		"make": "Tesla",
+		"model": "Model S",
+		"year": 2017,
+		"license": "9DFA274",
+		"color": "red",
+		"numberOfSeats": 5,
+		"transmission": "Automatic",
+		"engine": "Electric",
+		"vehicleClass": "Sedan"
+	},
+	{
+		"make": "Nissan",
+		"model": "GT-R NISMO",
+		"year": 2020,
+		"license": "7APW249",
+		"color": "White",
+		"numberOfSeats": 4,
+		"transmission": "Automatic",
+		"engine": "Petrol",
+		"vehicleClass": "Coupe",
+		"image": "../../client/src/images/Car/nissanGTR.png"
+	},
+	{
+		"make": "Porsche",
+		"model": "Cayman",
+		"year": 2016,
+		"license": "3AXL904",
+		"color": "Grey",
+		"numberOfSeats": 2,
+		"transmission": "Manual",
+		"engine": "Petrol",
+		"vehicleClass": "Coupe"
+	},
+	{
+		"make": "Toyota",
+		"model": "Sienna",
+		"year": 2021,
+		"license": "4LAD213",
+		"color": "Grey",
+		"numberOfSeats": 8,
+		"transmission": "Automatic",
+		"engine": "Petrol",
+		"vehicleClass": "Minivan"
+	},
+	{
+		"make": "Chevrolet",
+		"model": "Camaro",
+		"year": 2018,
+		"license": "5XRV384",
+		"color": "Yellow",
+		"numberOfSeats": 4,
+		"transmission": "Automatic",
+		"engine": "Petrol",
+		"vehicleClass": "Coupe"
+	},
+	{
+		"make": "Hyundai",
+		"model": "Ioniq 5",
+		"year": 2023,
+		"license": "6TRL932",
+		"color": "Grey",
+		"numberOfSeats": 5,
+		"transmission": "Automatic",
+		"engine": "Electric",
+		"vehicleClass": "SUV"
+	},
+	{
+		"make": "Mazda",
+		"model": "3",
+		"year": 2021,
+		"license": "8BPL323",
+		"color": "White",
+		"numberOfSeats": 5,
+		"transmission": "Automatic",
+		"engine": "Petrol",
+		"vehicleClass": "Sedan"
+	}
+]

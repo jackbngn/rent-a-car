@@ -1,0 +1,89 @@
+.heroSection {
+	width: 100%;
+	height: 97vh;
+	position: relative;
+}
+
+.heroContent {
+	width: 100%;
+	height: 88vh;
+	display: flex;
+	align-items: center;
+	position: relative;
+	padding: 0 100px;
+	background-image: url('./Car-lot4.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position-y: -500px;
+}
+
+.heroSectionText {
+	display: flex;
+	flex-direction: column;
+	font-family: Popoins, sans-serif;
+	font-weight: 700;
+
+	max-width: 55rem;
+
+	color: whitesmoke;
+}
+
+.heroSectionText h1 span {
+	color: #9ca5ec;
+}
+.heroSection img {
+	margin-top: 100px;
+	position: absolute;
+	right: 0;
+	max-width: 45%;
+
+	object-fit: cover;
+}
+.bookButton {
+	background-color: #9ca5ec;
+	font-size: 24px;
+	color: white;
+	font-weight: 600;
+}
+
+.bookButton:hover {
+	background-color: #747bb1;
+}
+
+.bookButton:active {
+	color: #9ca5ec;
+}
+
+.learnButton {
+	background-color: black;
+	color: white;
+	font-weight: 600;
+	font-size: 24px;
+}
+
+.learnButton:hover {
+	background-color: rgb(27, 27, 27);
+}
+
+.actionButton {
+	width: 50%;
+}
+@media screen and (max-width: 1140px) {
+	.heroContent {
+		background-image: none;
+	}
+	.heroContent {
+		justify-content: center;
+	}
+
+	.heroSectionText {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		color: #000;
+	}
+	.actionButton {
+		width: auto;
+	}
+}
