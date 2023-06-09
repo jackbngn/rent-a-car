@@ -5,6 +5,7 @@ class AuthService {
 	getProfile() {
 		return decode(this.getToken());
 	}
+
 	// check if the user is logged in
 	loggedIn() {
 		const token = this.getToken();
@@ -12,7 +13,7 @@ class AuthService {
 		return !!token && !this.isTokenExpired(token);
 	}
 	// checks the token's expiration
-	istokenExpired(token) {
+	isTokenExpired(token) {
 		try {
 			const decoded = decode(token);
 			if (decoded.exp < Date.now() / 1000) {

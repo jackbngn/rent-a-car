@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './NavBar.css';
 import Logo from './logo2.png';
@@ -7,24 +7,20 @@ import Auth from '../../utils/auth';
 export default function NavBar() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isSignedIn, setIsSignedIn] = useState(true);
-	const [username, setUsername] = useState('');
+	const [username, setUsername] = useState(null);
 
+	useEffect(() => {
+		if (Auth.loggedIn()) {
+			const profile = Auth.getProfile();
+			setUsername(profile.data.username);
+		}
+	}, []);
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
 
 	const closeMenu = () => {
 		setIsOpen(false);
-	};
-
-	const handleSignIn = (username) => {
-		setIsSignedIn(true);
-		setUsername('username');
-	};
-
-	const handleLogout = () => {
-		setIsSignedIn(false);
-		setUsername('');
 	};
 
 	return (
