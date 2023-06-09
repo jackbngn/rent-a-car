@@ -3,7 +3,6 @@ import React from 'react';
 export default function About() {
 	return (
 		<div className="aboutUs">
-
 			<div>
 				<h2 className='team'>About Fleet</h2>
 				<p className="aboutPage mb-3 text-center decoration-4 text-2xl font-bold">At Fleet, we are dedicated to providing our customers with the
@@ -13,7 +12,7 @@ export default function About() {
 				</p>
 			</div>
 
-			<h1 className='team'>Meet the Team</h1>
+			<h1 className="team">Meet the Team</h1>
 
 			<div className="row cards">
 				<div className="column">
@@ -34,8 +33,9 @@ export default function About() {
 						<div className="container">
 							<h2 className='font-bold text-lg'>Nathaniel Vanderpoort</h2>
 							<p className="title">Team Member</p>
-							<p>Some text that describes me lorem ipsum ipsum lorem.</p>
-							<p>example@example.com</p>
+							<p>“2023’s most handsome coder”
+								-my grandma</p>
+							<a className="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" href="mailto: natevandy38@gmail.com">Send Email</a>
 						</div>
 					</div>
 				</div>
@@ -46,8 +46,8 @@ export default function About() {
 						<div className="container">
 							<h2 className='font-bold text-lg'>Antonio Robledo-Ysasaga</h2>
 							<p className="title">Team Member</p>
-							<p>Some text that describes me lorem ipsum ipsum lorem.</p>
-							<p>example@example.com</p>
+							<p>How the heck do you center this div?</p>
+							<a className="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" href="mailto: robledoy@uci.edu">Send Email</a>
 						</div>
 					</div>
 				</div>
@@ -60,7 +60,7 @@ export default function About() {
 						<h2 className='font-bold text-lg'>Jack Nguyen</h2>
 						<p className="title">Team Member</p>
 						<p>Some text that describes me lorem ipsum ipsum lorem.</p>
-						<p>example@example.com</p>
+						<a className="inline-flex items-center h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" href="mailto: maegan.batorek@valpo.edu">Send Email</a>
 					</div>
 				</div>
 			</div>

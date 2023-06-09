@@ -1,0 +1,40 @@
+.whyChooseUs {
+	padding: 40px 0;
+	background-color: #f7f7f7;
+}
+
+.whyChooseUsContainer {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.whyChooseUsItem {
+	display: flex;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.whyChooseUsItem.reverse {
+	flex-direction: row-reverse;
+}
+
+.whyChooseUsImage {
+	flex: 1;
+}
+.whyChooseUsImage img {
+	width: 400px;
+	height: 300px;
+	object-fit: cover;
+}
+
+.whyChooseUsText {
+	flex: 1;
+	margin-left: 40px;
+}
+
+.whyChooseUsText p {
+	font-size: 24px;
+	color: #000;
+	line-height: 1.5;
+	font-family: 'Poppins', sans-serif;
+}
