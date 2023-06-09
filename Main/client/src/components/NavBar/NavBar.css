@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 nav {
 	display: flex;
 	justify-content: space-around;
@@ -143,6 +145,19 @@ a {
 .mobile-menu li:hover {
 	transition: color 0.4s;
 	font-size: 28px;
+}
+
+.userSection {
+	display: flex;
+	align-items: center;
+}
+
+.username {
+	font-size: 40px;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+	margin-right: 10px;
+	color: #9ca5ec;
 }
 
 @media screen and (min-width: 1141px) {
