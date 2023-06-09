@@ -18,18 +18,46 @@ export default function BookingForm() {
 	//hard coded car data
 	const carData = [
 		{
-			id: 1,
 			make: 'Nissan',
 			model: 'GT-R NISMO',
-			year: 2020,
-			license: '7APW249',
-			color: 'White',
-			numberOfSeats: 4,
-			transmission: 'Automatic',
-			engine: 'Petrol',
-			vehicleClass: 'Coupe',
 			image: NissanGtr,
 		},
+		{
+			make: 'Chevrolet',
+			model: 'Camaro',
+			image: Camaro,			
+		},
+		{
+			make: 'Honda',
+			model: 'Accord',
+			image: Honda,
+		},
+		{
+			make: 'Hyundai',
+			model: 'Ioniq 5',
+			image: Hyundai,
+		},
+		{
+			make: 'Mazda',
+			model: '3',
+			image: Mazda,
+		},
+		{
+			make: 'Porsche',
+			model: 'Cayman',
+			image: Porsche,
+		},
+		{
+			make: 'Tesla',
+			model: 'Model S',
+			image: Tesla,
+		},
+		{
+			make: 'Toyota',
+			model: 'Sienna',
+			image: Toyota,
+		}
+
 	];
 
 	// useState to set open and close for modal
