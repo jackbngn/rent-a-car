@@ -10,11 +10,11 @@ const vehicleSchema = new Schema({
         required: true,
     },
     year: {
-        Type: Number,
+        type: Number,
         required: true,
     },
     license: {
-        Type: String,
+        type: String,
         required: false,
         unique: true,
     },
