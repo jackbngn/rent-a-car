@@ -1,13 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaCar } from 'react-icons/fa';
 import { MdPlace } from 'react-icons/md';
 
 import './BookForm.css';
+import Modal from '../Modal/Modal';
+import NissanGtr from '../../images/Car/nissanGTR.png';
 
 export default function BookingForm() {
+	//hard coded car data
+	const carData = [
+		{
+			id: 1,
+			make: 'Nissan',
+			model: 'GT-R NISMO',
+			year: 2020,
+			license: '7APW249',
+			color: 'White',
+			numberOfSeats: 4,
+			transmission: 'Automatic',
+			engine: 'Petrol',
+			vehicleClass: 'Coupe',
+			image: NissanGtr,
+		},
+	];
+	// useState to set open and close for modal
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [selectedData, setSelectedData] = useState({
+		carType: '',
+		dropOffDate: '',
+		returnDate: '',
+	});
+	// Save form data
+	const handleInputChange = (event) => {
+		const { name, value } = event.target;
+		setSelectedData((prevData) => ({
+			...prevData,
+			[name]: value,
+		}));
+	};
+
+	// Handle modal opening by setting the useState isModalOpen to true
+	const handleOpenModal = () => {
+		//turn off scrolling on main page when modal is open
+		document.body.classList.add('noScroll');
+		setIsModalOpen(true);
+	};
+
+	// Handle modal closing by setting the use state isModalOpen to false
+	const handleCloseModal = () => {
+		//remove no scoll when modal is closed
+		document.body.classList.remove('noScroll');
+		setIsModalOpen(false);
+	};
+	// Find the user's selected car to by the make and moddel to get the image data
 	return (
-		<div className="bookForm  ">
-			<div className="formBox ">
+		<div className="bookForm">
+			<div className="formBox">
 				<h2 className="text-2xl font-semibold mb-6">Book A Car</h2>
 				<form className="flex flex-col md:flex-row lg:flex-row">
 					<div className="formField mr-0 md:mr-10 lg:mr-10 mb-4 md:mb-0 lg:mb-0">
@@ -17,19 +65,22 @@ export default function BookingForm() {
 						</label>
 						<select
 							className="carType border p-2 w-full md:w-64 lg:w-64"
-							defaultValue=""
+							name="carType"
+							value={selectedData.carType}
+							onChange={handleInputChange}
 							required>
 							<option value="" disabled>
 								Select your car type
 							</option>
-							<option value="sedan">Sedan</option>
-							<option value="suv">SUV</option>
-							<option value="electric">Electric</option>
-							<option value="luxury">Luxury</option>
+							{carData.map((car) => (
+								<option key={car.id} value={`${car.make} ${car.model} `}>
+									{car.make} {car.model}
+								</option>
+							))}
 						</select>
 					</div>
 
-					<div className=" mr-0 md:mr-10 lg:mr-10 mb-4 md:mb-0 lg:mb-0">
+					<div className="mr-0 md:mr-10 lg:mr-10 mb-4 md:mb-0 lg:mb-0">
 						<label className="flex items-center mb-2">
 							<MdPlace className="mr-2 text-blue-300" />
 							<p className="text-blue-300">Drop-off Date *</p>
@@ -37,29 +88,45 @@ export default function BookingForm() {
 						<input
 							type="date"
 							className="border p-2 w-full md:w-64 lg:w-64"
+							name="dropOffDate"
+							value={selectedData.dropOffDate}
+							onChange={handleInputChange}
 							required
 						/>
 					</div>
 
-					<div className=" mr-0 md:mr-10 lg:mr-10 mb-4 md:mb-0 lg:mb-0">
+					<div className="mr-0 md:mr-10 lg:mr-10 mb-4 md:mb-0 lg:mb-0">
 						<label className="flex items-center mb-2">
 							<MdPlace className="mr-2 text-blue-300" />
-							<p className="text-blue-300">Pick-up Date *</p>
+							<p className="text-blue-300">Return Date *</p>
 						</label>
 						<input
 							type="date"
-							className="border p- w-full md:w-64 lg:w-64"
+							className="border p-2 w-full md:w-64 lg:w-64"
+							name="returnDate"
+							value={selectedData.Date}
+							onChange={handleInputChange}
 							required
 						/>
 					</div>
 
 					<div className="mt-4 md:mt-8 lg:mt-8">
-						<button className="searchButton border p-2 w-full sm:w-44 md:w-64 lg:w-64 bg-blue-300 rounded-lg hover:bg-blue-400 font-semibold text-xl">
+						<button
+							className="searchButton border p-2 w-full sm:w-44 md:w-64 lg:w-64 bg-blue-300 rounded-lg hover:bg-blue-400 font-semibold text-xl"
+							onClick={handleOpenModal}
+							type="button">
 							Search
 						</button>
 					</div>
 				</form>
 			</div>
+
+			<Modal
+				isOpen={isModalOpen}
+				onClose={handleCloseModal}
+				selectedData={selectedData}
+				carData={carData}
+			/>
 		</div>
 	);
 }
