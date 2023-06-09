@@ -9,7 +9,12 @@ import Collection from './pages/Collection/Collection';
 import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
+<<<<<<< HEAD
+import Success from './pages/Success';
+import './App.css';
+=======
 
+>>>>>>> ac080d1911178fdc7669c69baee39fc84871637d
 import {
 	ApolloClient,
 	InMemoryCache,
@@ -48,25 +53,25 @@ const client = new ApolloClient({
   // will return the corrresponding component to render
 const renderPage = () => {
   if (currentPage === 'Home') {
-    return <Home />
+	return <Home />
   }
   if (currentPage === 'About') {
-    return <About />
+	return <About />
   }
   if (currentPage === 'Collection') {
-    return <Collection />
+	return <Collection />
   }
   if (currentPage === 'Contact') {
-    return <Contact />
+	return <Contact />
   }
   if (currentPage === 'Login') {
-    return <Login />
+	return <Login />
   }
   if (currentPage === 'Reservations') {
-    return <Reservations />
+	return <Reservations />
   } 
   if (currentPage === 'SignUp') {
-    return <SignUp />
+	return <SignUp />
   }
 };
 
@@ -74,23 +79,22 @@ const handlePageChange = (page) => setCurrentPage(page); */
 
 function App() {
 	return (
-		<ApolloProvider client={client}>
-			<Router>
-				<div>
-					<NavBar />
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/about" element={<About />} />
-						<Route path="/reservation" element={<Reservation />} />
-						<Route path="/collections" element={<Collection />} />
-						<Route path="/contact" element={<Contact />} />
-						<Route path="/checkout" element={<Checkout />} />
-						<Route path="/login" element={<Login />} />
-					</Routes>
-					<Footer />
-				</div>
-			</Router>
-		</ApolloProvider>
+		<Router>
+			<div>
+				<NavBar />
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/about" element={<About />} />
+					<Route path="/reservation" element={<Reservation />} />
+					<Route path="/collections" element={<Collection />} />
+					<Route path="/contact" element={<Contact />} />
+					<Route path="/checkout" element={<Checkout />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/success" element={<Success />} />
+				</Routes>
+				<Footer />
+			</div>
+		</Router>
 	);
 }
 

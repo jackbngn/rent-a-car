@@ -32,11 +32,11 @@ export default function Checkout() {
                 <div className='flex space-x-2'>
                     <div className='grid-cols-2 w-full'>
                         <span className='font-semibold text-lg'>Address 1</span>
-                        <input type='text' className='bg-gray-200 px-2 py-2 border border-gray-500 rounded w-full' placeholder='MM/YY' name='' id='' />
+                        <input type='text' className='bg-gray-200 px-2 py-2 border border-gray-500 rounded w-full' name='' id='' />
                     </div>
                     <div className='grid-cols-2 w-full'>
                         <span className='font-semibold text-lg'>Address 2</span>
-                        <input type='text' className='bg-gray-200 px-2 py-2 border border-gray-500 rounded w-full' placeholder='***' name='' id='' />
+                        <input type='text' className='bg-gray-200 px-2 py-2 border border-gray-500 rounded w-full' name='' id='' />
                     </div>
                 </div>
 
