@@ -75,22 +75,24 @@ const handlePageChange = (page) => setCurrentPage(page); */
 
 function App() {
 	return (
-		<Router>
-			<div>
-				<NavBar />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/about" element={<About />} />
-					<Route path="/reservation" element={<Reservation />} />
-					<Route path="/collections" element={<Collection />} />
-					<Route path="/contact" element={<Contact />} />
-					<Route path="/checkout" element={<Checkout />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/success" element={<Success />} />
-				</Routes>
-				<Footer />
-			</div>
-		</Router>
+		<ApolloProvider client={client}>
+			<Router>
+				<div>
+					<NavBar />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/reservation" element={<Reservation />} />
+						<Route path="/collections" element={<Collection />} />
+						<Route path="/contact" element={<Contact />} />
+						<Route path="/checkout" element={<Checkout />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/success" element={<Success />} />
+					</Routes>
+					<Footer />
+				</div>
+			</Router>
+		</ApolloProvider>
 	);
 }
 
