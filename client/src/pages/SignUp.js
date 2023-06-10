@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import auth from '../utils/auth';
 
 const SignUp = () => {
 	const [validated, setValidated] = useState(false);
@@ -39,7 +39,7 @@ const SignUp = () => {
 			});
 
 			if (data) { 
-			Auth.login(data.addUser.token);
+			auth.login(data.addUser.token);
 		} else {
 			console.error(error);
 		}
