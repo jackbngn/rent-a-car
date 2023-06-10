@@ -6,6 +6,18 @@ export const GET_ME = gql`
 			_id
 			username
 			email
+			savedVehicles {
+				make
+				model
+				year
+				license
+				color
+				numberOfSeats
+				transmission
+				engine
+				vehicleClass
+				image
+			}
 		}
 	}
 `;

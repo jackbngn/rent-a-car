@@ -34,14 +34,14 @@ const SignUp = () => {
 			return;
 		}
 
-		try {
 			const { data } = await addUser({
 				variables: { ...userFormData },
 			});
 
+			if (data) { 
 			Auth.login(data.addUser.token);
-		} catch (err) {
-			console.error(err);
+		} else {
+			console.error(error);
 		}
 
 		setUserFormData({
