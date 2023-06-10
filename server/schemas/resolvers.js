@@ -8,22 +8,13 @@ const resolvers = {
 		// CREATE a user
 		me: async (parent, args, context) => {
 			if (context.user) {
-				const user = await User.findOne({ _id: context.user_id }).select(
+				const user = await User.findOne({ _id: context.user._id }).select(
 					'-__v -password',
 				);
 
 				return user;
 			}
-			// throw new AuthenticationError('You need to be logged in to access this.');
-		},
-		getAllUsers: async () => {
-			try {
-				const users = await User.find();
-				return users;
-			} catch (error) {
-				console.error(error);
-				throw new Error('Failed to fetch users from the database');
-			}
+			throw new AuthenticationError('You need to be logged in to access this.');
 		},
 		vehicles: async () => {
 			try {
@@ -38,23 +29,16 @@ const resolvers = {
 
 	Mutation: {
 		// SignUp
-		addUser: async (parent, { username, email, password }) => {
-			try {
-				const user = await User.create({ username, email, password });
-
+		addUser: async (parent, args) => {
+				const user = await User.create(args);
 				const token = signToken(user);
 
 				return { token, user };
-			} catch (err) {
-				throw new AuthenticationError('Error creating user');
-			}
-		},
+			},
 		// LOGIN a user
-		login: async (parent, args) => {
-			try {
-				const { username, email, password } = args;
+		login: async (parent, { email, password }) => {
 
-				const user = await User.findOne({ $or: [{ username }, { email }] });
+				const user = await User.findOne({ email });
 
 				if (!user) {
 					throw new AuthenticationError('Incorrect email or password');
@@ -69,31 +53,17 @@ const resolvers = {
 				const token = signToken(user);
 
 				return { token, user };
-			} catch (err) {
-				throw new AuthenticationError(err.message);
-			}
-		},
+			},
+
 		// ADD a reservation
-		addVehicle: async (parent, { vehicleInput }, context) => {
-			if (context.vehicle) {
-				const {
-					make,
-					model,
-					year,
-					license,
-					color,
-					numberofSeats,
-					transmission,
-					engine,
-					vehicleClass,
-					image,
-				} = vehicleInput;
-				const vehicle = await Vehicle.findByIdAndUpdate(
-					{ _id: context.vehicle._id },
-					{ $push: { savedVehicles: { vehicleInput } } },
+		addVehicle: async (parent, { vehicle }, context) => {
+			if (context.user) {
+				const updatedUser = await User.findByIdAndUpdate(
+					{ _id: context.user._id },
+					{ $addToSet: { savedVehicles: vehicle }  },
 					{ new: true },
 				);
-				return vehicle;
+				return updatedUser;
 			}
 			throw new AuthenticationError(
 				'An error has occurred and your vehicle was not added',
@@ -102,13 +72,13 @@ const resolvers = {
 
 		// DELETE a reservation
 		removeVehicle: async (parent, { license }, context) => {
-			if (context.vehicle) {
-				const vehicle = await Vehicle.findByIdAndUpdate(
-					{ _id: context.vehicle._id },
-					{ $push: { savedVehicles: { license } } },
+			if (context.user) {
+				const updatedUser = await User.findByIdAndUpdate(
+					{ _id: context.user._id },
+					{ $pull: { savedVehicles: {license: license } } },
 					{ new: true },
 				);
-				return vehicle;
+				return updatedUser;
 			}
 			throw new AuthenticationError(
 				'A vehicle matching this license plate was not found',
