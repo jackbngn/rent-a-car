@@ -1,5 +1,6 @@
 // Decodes token and grabs the user info from it
 import decode from 'jwt-decode';
+
 class AuthService {
 	// grab the user's data
 	getProfile() {
