@@ -1,0 +1,38 @@
+.successContainer {
+	text-align: center;
+
+	padding: 20px;
+	height: 80vh;
+}
+
+.successHeading {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.successMessage {
+	font-size: 16px;
+	color: #888;
+	margin-bottom: 20px;
+}
+
+.successImage {
+	width: 100px;
+	height: 100px;
+	margin-bottom: 20px;
+}
+
+.homeButton {
+	background-color: #4caf50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.homeButton:hover {
+	background-color: #45a049;
+}
