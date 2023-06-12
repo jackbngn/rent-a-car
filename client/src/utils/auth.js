@@ -1,7 +1,8 @@
 // Decodes token and grabs the user info from it
 import decode from 'jwt-decode';
+
 class AuthService {
-	// grad the user's data
+	// grab the user's data
 	getProfile() {
 		return decode(this.getToken());
 	}

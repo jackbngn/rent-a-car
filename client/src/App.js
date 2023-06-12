@@ -27,7 +27,7 @@ import StripeCheckout from './utils/StripeCheckout';
 import SuccessPage from './pages/SuccessCheckout/SuccessCheckout';
 
 const httpLink = createHttpLink({
-	uri: 'http://localhost:3001/graphql',
+	uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
