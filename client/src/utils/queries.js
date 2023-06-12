@@ -13,9 +13,11 @@ export const GET_ME = gql`
 export const VEHICLES = gql`
 	query getVehicles {
 		vehicles {
+			_id
 			make
 			model
 			image
+			license
 		}
 	}
 `;

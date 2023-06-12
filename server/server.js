@@ -1,6 +1,8 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+require('dotenv').config({ path: '../.env' });
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -25,6 +27,39 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+// Stripe api to create checkout session
+app.post('/create-checkout-session', async (req, res) => {
+	const { carType, quantity } = req.body;
+
+	try {
+		const session = await Stripe.checkout.sessions.create(
+			{
+				payment_method_types: ['card'],
+				line_items: [
+					{
+						price: carType,
+						quantity: quantity,
+					},
+				],
+				mode: 'payment',
+
+				success_url: 'http://localhost:3000/chekcout/success',
+				cancel_url: 'http://localhost:3000/',
+			},
+			{
+				apiKey: process.env.STRIPE_SECRET_KEY,
+			},
+		);
+
+		res.json({
+			sessionId: session.id,
+			publicKey: process.env.STRIPE_PUBLIC_KEY,
+		});
+	} catch (error) {
+		console.error('Error creating Checkout Session:', error);
+		res.status(500).json({ error: 'Failed to create Checkout Session' });
+	}
+});
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
 	await server.start();

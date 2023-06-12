@@ -22,10 +22,17 @@ const userSchema = new Schema(
 			required: true,
 			minLength: 6,
 		},
+
 		savedVehicles: [
 			{
 				type: Schema.Types.ObjectId,
 				ref: 'Vehicle',
+			},
+		],
+		reservations: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Reservation',
 			},
 		],
 	},

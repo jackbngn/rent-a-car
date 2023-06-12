@@ -22,6 +22,14 @@ const typeDefs = gql`
 		password: String
 	}
 
+	type Reservation {
+		id: ID!
+		carType: String!
+		dropOffDate: String!
+		returnDate: String!
+		userId: ID!
+	}
+
 	type Auth {
 		token: ID!
 		user: User
@@ -49,6 +57,12 @@ const typeDefs = gql`
 			image: String!
 		): User
 		removeVehicle(license: ID!): Vehicle
+		createReservation(
+			carType: String!
+			dropOffDate: String!
+			returnDate: String!
+			userId: ID!
+		): Reservation!
 	}
 `;
 
