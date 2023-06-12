@@ -20,6 +20,7 @@ const typeDefs = gql`
 		username: String
 		email: String
 		savedVehicles: [Vehicle]
+		Reservations: [Vehicle]
 	}
 
 	type Reservation {
@@ -56,30 +57,9 @@ const typeDefs = gql`
 	type Mutation {
 		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
-<<<<<<< HEAD
-		addVehicle(
-			make: String!
-			model: String!
-			year: Int!
-			license: String!
-			color: String!
-			numberofSeats: Int!
-			transmission: String!
-			engine: String!
-			vehicleClass: String!
-			image: String!
-		): User
-		removeVehicle(license: ID!): Vehicle
-		createReservation(
-			carType: String!
-			dropOffDate: String!
-			returnDate: String!
-			userId: ID!
-		): Reservation!
-=======
+		createReservation(vehicle: addVehicleInput): User
 		addVehicle(vehicle: addVehicleInput): User
 		removeVehicle(license: String!): User
->>>>>>> 34fb45cd4e12701f44cbbaeffc2649fbb64ac23b
 	}
 `;
 
