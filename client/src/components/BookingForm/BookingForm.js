@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { FaCar } from 'react-icons/fa';
 import { MdPlace } from 'react-icons/md';
 import carData from '../../utils/car.data';
-import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
 import './BookForm.css';
-import Modal from '../Modal/Modal';
+// import Modal from '../Modal/Modal';
 
 export default function BookingForm() {
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	// const [isModalOpen, setIsModalOpen] = useState(false);
 	const [selectedData, setSelectedData] = useState({
 		carType: '',
 		dropOffDate: '',

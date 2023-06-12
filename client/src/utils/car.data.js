@@ -19,7 +19,7 @@ const carData = [
 		engine: 'Petrol',
 		vehicleClass: 'Sedan',
 		image: Honda,
-		priceId: 'price_1NHLgwKUpNsLneO9BuxTgoWK',
+		priceId: 'price_1NI8rHKUpNsLneO9WAvv9QIP',
 		price: 38.19,
 	},
 	{
@@ -33,7 +33,7 @@ const carData = [
 		engine: 'Electric',
 		vehicleClass: 'Sedan',
 		image: Tesla,
-		priceId: 'price_1NHLhEKUpNsLneO9ZfAVk7X4',
+		priceId: 'price_1NI8qyKUpNsLneO9fe6q3raL',
 		price: 65.35,
 	},
 	{
@@ -47,7 +47,7 @@ const carData = [
 		engine: 'Petrol',
 		vehicleClass: 'Coupe',
 		image: NissanGtr,
-		priceId: 'price_1NHLgEKUpNsLneO9x1XzRtTh',
+		priceId: 'price_1NI8reKUpNsLneO9j3d2vm5X',
 		price: 76.8,
 	},
 	{
@@ -61,7 +61,7 @@ const carData = [
 		engine: 'Petrol',
 		vehicleClass: 'Coupe',
 		image: Porsche,
-		priceId: 'price_1NHLhXKUpNsLneO9BJoLjJFQ',
+		priceId: 'price_1NI8qMKUpNsLneO9FhwYH94L',
 		price: 102.9,
 	},
 	{
@@ -75,7 +75,7 @@ const carData = [
 		engine: 'Petrol',
 		vehicleClass: 'Minivan',
 		image: Toyota,
-		priceId: 'price_1NHLi1KUpNsLneO9nVCMXwdw',
+		priceId: 'price_1NI8pwKUpNsLneO9P0DC3tAn',
 		price: 59.76,
 	},
 	{
@@ -89,7 +89,7 @@ const carData = [
 		engine: 'Petrol',
 		vehicleClass: 'Coupe',
 		image: Camaro,
-		priceId: 'price_1NHLigKUpNsLneO9QcIH8Kd2',
+		priceId: 'price_1NI8pdKUpNsLneO9mj7HnrwF',
 		price: 63.26,
 	},
 	{
@@ -103,7 +103,7 @@ const carData = [
 		engine: 'Electric',
 		vehicleClass: 'SUV',
 		image: Toyota,
-		priceId: 'price_1NHLj7KUpNsLneO9HfiWseKL',
+		priceId: 'price_1NI8pCKUpNsLneO9jCQQNyGw',
 		price: 63.6,
 	},
 	{
@@ -117,7 +117,7 @@ const carData = [
 		engine: 'Petrol',
 		vehicleClass: 'Sedan',
 		image: Mazda,
-		priceId: 'price_1NHLjPKUpNsLneO9gGTZZVGL',
+		priceId: 'price_1NI8nHKUpNsLneO9QRfPSr18',
 		price: 42.1,
 	},
 ];
