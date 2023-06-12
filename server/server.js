@@ -11,11 +11,18 @@ const { authMiddleware } = require('./utils/auth');
 dotenv.config({ path: '../.env' });
 
 // Initialize Stripe with the appropriate secret key based on the environment
-const stripeConfig = {
-	test: process.env.STRIPE_SECRET_KEY_TEST,
-	live: process.env.STRIPE_SECRET_KEY_LIVE,
+const stripeSecretConfig = {
+	development: process.env.STRIPE_SECRET_KEY_TEST,
+	production: process.env.STRIPE_SECRET_KEY_LIVE,
 };
-const stripe = new Stripe(stripeConfig[process.env.NODE_ENV || 'test']);
+// Initialize Stripe with the appropriate public key based on the enviorment
+const stripePublicConfig = {
+	development: process.env.STRIPE_PUBLIC_KEY_TEST,
+	production: process.env.STRIPE_PUBLIC_KEY_LIVE,
+};
+const stripe = new Stripe(
+	stripeSecretConfig[process.env.NODE_ENV || 'development'],
+);
 
 const app = express();
 const server = new ApolloServer({
@@ -72,7 +79,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
 		res.json({
 			sessionId: session.id,
-			publicKey: stripeConfig[process.env.NODE_ENV || 'test'].STRIPE_PUBLIC_KEY,
+			publicKey: stripePublicConfig[process.env.NODE_ENV || 'development'],
 		});
 	} catch (error) {
 		console.error('Error creating Checkout Session:', error);
