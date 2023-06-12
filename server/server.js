@@ -36,6 +36,8 @@ const cancelUrl =
 	process.env.NODE_ENV === 'production'
 		? 'https://fleet-rental.herokuapp.com/'
 		: 'http://localhost:3000/';
+
+const publicKey = process.env.STRIPE_PUBLIC_KEY;
 // Stripe api to create checkout session
 app.post('/create-checkout-session', async (req, res) => {
 	const { carType, quantity } = req.body;
@@ -64,7 +66,7 @@ app.post('/create-checkout-session', async (req, res) => {
 
 		res.json({
 			sessionId: session.id,
-			publicKey: process.env.STRIPE_PUBLIC_KEY,
+			publicKey: publicKey,
 		});
 	} catch (error) {
 		console.error('Error creating Checkout Session:', error);
