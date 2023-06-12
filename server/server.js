@@ -42,7 +42,9 @@ app.post('/create-checkout-session', async (req, res) => {
 					},
 				],
 				mode: 'payment',
-
+				shipping_address_collection: {
+					allowed_countries: ['US'],
+				},
 				success_url: 'http://localhost:3000/chekcout/success',
 				cancel_url: 'http://localhost:3000/',
 			},
