@@ -10,8 +10,6 @@ const { authMiddleware } = require('./utils/auth');
 // Load environment variables from .env file
 dotenv.config({ path: '../.env' });
 
-process.env.NODE_ENV = 'development';
-
 // Initialize Stripe with the appropriate secret key based on the environment
 const stripeSecretConfig = {
 	development: process.env.STRIPE_SECRET_KEY_TEST,
