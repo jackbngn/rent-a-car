@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
 const { Vehicle } = require('../models');
+const { Reservation } = require('../models/');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -15,6 +16,18 @@ const resolvers = {
 				return user;
 			}
 			throw new AuthenticationError('You need to be logged in to access this.');
+<<<<<<< HEAD
+		},
+		getAllUsers: async () => {
+			try {
+				const users = await User.find();
+				return users;
+			} catch (error) {
+				console.error(error);
+				throw new Error('Failed to fetch users from the database');
+			}
+=======
+>>>>>>> 34fb45cd4e12701f44cbbaeffc2649fbb64ac23b
 		},
 		vehicles: async () => {
 			try {
@@ -83,6 +96,37 @@ const resolvers = {
 			throw new AuthenticationError(
 				'A vehicle matching this license plate was not found',
 			);
+		},
+		createReservation: async (
+			_,
+			{ carType, dropOffDate, returnDate, userId },
+			context,
+		) => {
+			// if (!context.user) {
+			// 	throw new AuthenticationError(
+			// 		'You need to be logged in to perform this action',
+			// 	);
+			// }
+
+			// Create a new Reservation object with the provided data
+			const newReservation = new Reservation({
+				carType,
+				dropOffDate,
+				returnDate,
+				userId,
+			});
+
+			// Save the new reservation in the database
+			const savedReservation = await newReservation.save();
+
+			// Find the user by their ID and update their reservations field
+			const user = await User.findByIdAndUpdate(
+				userId,
+				{ $push: { reservations: savedReservation._id } },
+				{ new: true },
+			);
+
+			return savedReservation;
 		},
 	},
 };

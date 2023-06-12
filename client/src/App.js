@@ -1,6 +1,18 @@
-import React from 'react';
-import 'tailwindcss/tailwind.css';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import { setContext } from '@apollo/client/link/context';
+import {
+	ApolloClient,
+	InMemoryCache,
+	ApolloProvider,
+	createHttpLink,
+} from '@apollo/client';
+
+import 'tailwindcss/tailwind.css';
+import './App.css';
+
 import NavBar from './components/NavBar/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,16 +22,9 @@ import Contact from './pages/Contact';
 import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Success from './pages/Success';
-import './App.css';
-import {
-	ApolloClient,
-	InMemoryCache,
-	ApolloProvider,
-	createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import Footer from './components/FooterSection/Footer';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import StripeCheckout from './utils/StripeCheckout';
+import SuccessPage from './pages/SuccessCheckout/SuccessCheckout';
 
 const httpLink = createHttpLink({
 	uri: '/graphql',
@@ -42,36 +47,7 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-/* export default function App() {
-  const [currentPage, setCurrentPage] = useState('Home');
-
-  // This method is checking to see what the value of 'currentPage' is and depending on the value, 
-  // will return the corrresponding component to render
-const renderPage = () => {
-  if (currentPage === 'Home') {
-	return <Home />
-  }
-  if (currentPage === 'About') {
-	return <About />
-  }
-  if (currentPage === 'Collection') {
-	return <Collection />
-  }
-  if (currentPage === 'Contact') {
-	return <Contact />
-  }
-  if (currentPage === 'Login') {
-	return <Login />
-  }
-  if (currentPage === 'Reservations') {
-	return <Reservations />
-  } 
-  if (currentPage === 'SignUp') {
-	return <SignUp />
-  }
-};
-
-const handlePageChange = (page) => setCurrentPage(page); */
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 function App() {
 	return (
@@ -85,14 +61,23 @@ function App() {
 						<Route path="/reservation" element={<Reservation />} />
 						<Route path="/collections" element={<Collection />} />
 						<Route path="/contact" element={<Contact />} />
-						<Route path="/checkout" element={<Checkout />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/success" element={<Success />} />
+						<Route path="/checkout/success" element={<SuccessPage />} />
+						<Route path="/checkout/*" element={<CheckoutWithElements />} />
 					</Routes>
 					<Footer />
 				</div>
 			</Router>
 		</ApolloProvider>
+	);
+}
+
+function CheckoutWithElements() {
+	return (
+		<Elements stripe={stripePromise}>
+			<StripeCheckout />
+		</Elements>
 	);
 }
 

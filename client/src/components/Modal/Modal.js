@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Modal({
 	isOpen,
@@ -18,9 +19,7 @@ export default function Modal({
 	const [dropOffTime, setDropOffTime] = useState('');
 	const [returnTime, setReturnTime] = useState('');
 
-	if (!isOpen) {
-		return null;
-	}
+	const navigate = useNavigate();
 
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
@@ -72,11 +71,18 @@ export default function Modal({
 
 		// Close the modal
 		onClose();
+
+		// Redirect to the checkout page
+		navigate.push('/checkout');
 	};
 
 	const selectedCar = carData.find(
 		(car) => `${car.make} ${car.model}` === selectedData.carType.trim(),
 	);
+
+	if (!isOpen) {
+		return null;
+	}
 
 	return (
 		<div>

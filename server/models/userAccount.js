@@ -22,12 +22,25 @@ const userSchema = new Schema(
 			required: true,
 			minLength: 6,
 		},
+
 		savedVehicles: [
 			{
 				type: Schema.Types.ObjectId,
+<<<<<<< HEAD
+				ref: 'Vehicle',
+			},
+		],
+		reservations: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Reservation',
+			},
+		],
+=======
 				ref: 'Vehicle'
 			}
 		]
+>>>>>>> 34fb45cd4e12701f44cbbaeffc2649fbb64ac23b
 	},
 	{
 		toJSON: {
