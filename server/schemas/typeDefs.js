@@ -20,6 +20,7 @@ const typeDefs = gql`
 		username: String
 		email: String
 		savedVehicles: [Vehicle]
+		Reservations: [Vehicle]
 	}
 
 	type Reservation {
@@ -56,6 +57,7 @@ const typeDefs = gql`
 	type Mutation {
 		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
+		createReservation(vehicle: addVehicleInput): User
 		addVehicle(vehicle: addVehicleInput): User
 		removeVehicle(license: String!): User
 	}

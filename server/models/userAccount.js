@@ -26,7 +26,6 @@ const userSchema = new Schema(
 		savedVehicles: [
 			{
 				type: Schema.Types.ObjectId,
-<<<<<<< HEAD
 				ref: 'Vehicle',
 			},
 		],
@@ -36,11 +35,6 @@ const userSchema = new Schema(
 				ref: 'Reservation',
 			},
 		],
-=======
-				ref: 'Vehicle'
-			}
-		]
->>>>>>> 34fb45cd4e12701f44cbbaeffc2649fbb64ac23b
 	},
 	{
 		toJSON: {

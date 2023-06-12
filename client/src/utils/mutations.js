@@ -68,3 +68,14 @@ export const REMOVE_VEHICLE = gql`
 		}
 	}
 `;
+
+export const CREATE_RESERVATION = gql`
+	mutation createReservation($vehicle: String!) {
+		createReservation(vehicle: $addVehicleInput) {
+			carType
+			dropOffDate
+			returnDate
+			userId
+		}
+	}
+`
