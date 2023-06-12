@@ -21,7 +21,9 @@ const stripePublicConfig = {
 	production: process.env.STRIPE_PUBLIC_KEY_LIVE,
 };
 const stripe = new Stripe(
-	stripeSecretConfig[process.env.NODE_ENV || 'development'],
+	stripeSecretConfig[
+		process.env.NODE_ENV === 'production' ? 'production' : 'development'
+	],
 );
 
 const app = express();
@@ -79,7 +81,10 @@ app.post('/create-checkout-session', async (req, res) => {
 
 		res.json({
 			sessionId: session.id,
-			publicKey: stripePublicConfig[process.env.NODE_ENV || 'development'],
+			publicKey:
+				stripePublicConfig[
+					process.env.NODE_ENV === 'production' ? 'production' : 'development'
+				],
 		});
 	} catch (error) {
 		console.error('Error creating Checkout Session:', error);
