@@ -18,7 +18,7 @@ Booking a car is an essential part of any trip, but nobody likes the hassle of w
 
 ## Installation
 
-No installation is required, just click the following link:
+No installation is required, just click the following link: https://fleet-rental.herokuapp.com/
 
 
 ## Usage
@@ -30,7 +30,8 @@ After the user pays for their vehicle order, they will be redirected to the land
 
 SCREENSHOT OF HOMEPAGE BELOW
     `
-    ![screenshot]()
+    ![screenshot](client/src/images/Car/home_page.png)
+    ![screenshot](client/src/images/book_car.png)
 ## Credits
 
 * Maegan Batorek
