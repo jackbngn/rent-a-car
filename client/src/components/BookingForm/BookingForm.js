@@ -3,12 +3,16 @@ import { FaCar } from 'react-icons/fa';
 import { MdPlace } from 'react-icons/md';
 import carData from '../../utils/car.data';
 import { loadStripe } from '@stripe/stripe-js';
+import { Link, useNavigate } from 'react-router-dom';
 
+import Auth from '../../utils/auth';
 import './BookForm.css';
 // import Modal from '../Modal/Modal';
 
 export default function BookingForm() {
 	// const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const navigate = useNavigate();
 	const [selectedData, setSelectedData] = useState({
 		carType: '',
 		dropOffDate: '',
@@ -35,6 +39,13 @@ export default function BookingForm() {
 
 	const redirectToCheckout = async () => {
 		console.log('clicked');
+		const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+		if (!token) {
+			// Redirect to login/signup page
+			navigate('/login');
+			return;
+		}
 
 		const selectedCar = carData.find(
 			(car) => car.priceId === selectedData.carType,
@@ -66,6 +77,7 @@ export default function BookingForm() {
 
 			const { sessionId, publicKey, error } = await response.json();
 
+			console.log(publicKey);
 			if (error) {
 				console.error('Error:', error);
 				return;
