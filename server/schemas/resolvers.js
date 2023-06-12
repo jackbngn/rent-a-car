@@ -31,37 +31,36 @@ const resolvers = {
 	Mutation: {
 		// SignUp
 		addUser: async (parent, args) => {
-				const user = await User.create(args);
-				const token = signToken(user);
+			const user = await User.create(args);
+			const token = signToken(user);
 
-				return { token, user };
-			},
+			return { token, user };
+		},
 		// LOGIN a user
 		login: async (parent, { email, password }) => {
+			const user = await User.findOne({ email });
 
-				const user = await User.findOne({ email });
+			if (!user) {
+				throw new AuthenticationError('Incorrect email or password');
+			}
 
-				if (!user) {
-					throw new AuthenticationError('Incorrect email or password');
-				}
+			const correctPassword = await user.isCorrectPassword(password);
 
-				const correctPassword = await user.isCorrectPassword(password);
+			if (!correctPassword) {
+				throw new AuthenticationError('Incorrect email or password');
+			}
 
-				if (!correctPassword) {
-					throw new AuthenticationError('Incorrect email or password');
-				}
+			const token = signToken(user);
 
-				const token = signToken(user);
-
-				return { token, user };
-			},
+			return { token, user };
+		},
 
 		// ADD a reservation
 		addVehicle: async (parent, { vehicle }, context) => {
 			if (context.user) {
 				const updatedUser = await User.findByIdAndUpdate(
 					{ _id: context.user._id },
-					{ $addToSet: { savedVehicles: vehicle }  },
+					{ $addToSet: { savedVehicles: vehicle } },
 					{ new: true },
 				);
 				return updatedUser;
@@ -76,7 +75,7 @@ const resolvers = {
 			if (context.user) {
 				const updatedUser = await User.findByIdAndUpdate(
 					{ _id: context.user._id },
-					{ $pull: { savedVehicles: {license: license } } },
+					{ $pull: { savedVehicles: { license: license } } },
 					{ new: true },
 				);
 				return updatedUser;
