@@ -48,4 +48,4 @@ const vehicleSchema = new Schema({
 
 const Vehicle = model('Vehicle', vehicleSchema);
 
-module.exports = vehicleSchema
+module.exports = Vehicle;
