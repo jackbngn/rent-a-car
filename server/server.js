@@ -10,6 +10,8 @@ const { authMiddleware } = require('./utils/auth');
 // Load environment variables from .env file
 dotenv.config({ path: '../.env' });
 
+process.env.NODE_ENV = 'development';
+
 // Initialize Stripe with the appropriate secret key based on the environment
 const stripeSecretConfig = {
 	development: process.env.STRIPE_SECRET_KEY_TEST,
@@ -58,11 +60,21 @@ const cancelUrl =
 
 // Create checkout session route
 app.post('/create-checkout-session', async (req, res) => {
-	const { carType, quantity } = req.body;
+	const { carType, quantity, mode } = req.body;
 
 	try {
+		let paymentMethodTypes = ['card'];
+		if (mode === 'demo') {
+			// Demo mode: Use Stripe Checkout testing card
+			paymentMethodTypes = ['card'];
+		} else {
+			// Production mode: Use actual payment method types
+			// Update this with your desired payment method types for production
+			paymentMethodTypes = ['card'];
+		}
+
 		const session = await stripe.checkout.sessions.create({
-			payment_method_types: ['card'],
+			payment_method_types: paymentMethodTypes,
 			line_items: [
 				{
 					price: carType,
