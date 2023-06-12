@@ -1,0 +1,16 @@
+const config = {
+	test: {
+		STRIPE_PUBLIC_KEY:
+			'pk_test_51NHKFNKUpNsLneO9doVBoEfOnpK7rMsp7DHxTvkwHHyPGABtTZEKfJFgSYTPkMigAj0nGhKhqSApzA3Ks9MV9owy00Ntjf6OZU',
+		STRIPE_SECRET_KEY:
+			'sk_test_51NHKFNKUpNsLneO96PnX4dh2Fz5d64P6OeIBXoCgNNE9UUNNGkA6YLBfNK0FaKCeRsdKvMTOFDwY2oqNN8HOWvFp003XQ1SzWX',
+	},
+	live: {
+		STRIPE_PUBLIC_KEY:
+			'pk_live_51NHKFNKUpNsLneO9IjJzy1mgtbQVe6iupWoF6xOhIZYFyoGSmGsZYlDoa7SsSamjVhhO19c3of6HtFta5HvZvUS800azNrxcaS',
+		STRIPE_SECRET_KEY:
+			'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',
+	},
+};
+
+module.exports = config;

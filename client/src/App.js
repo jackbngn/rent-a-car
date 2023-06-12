@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
 import { setContext } from '@apollo/client/link/context';
 import {
 	ApolloClient,
@@ -19,11 +17,9 @@ import About from './pages/About';
 import Reservation from './pages/Reservations';
 import Collection from './pages/Collection/Collection';
 import Contact from './pages/Contact';
-import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Success from './pages/Success';
 import Footer from './components/FooterSection/Footer';
-import StripeCheckout from './utils/StripeCheckout';
 import SuccessPage from './pages/SuccessCheckout/SuccessCheckout';
 
 const httpLink = createHttpLink({
@@ -46,8 +42,6 @@ const client = new ApolloClient({
 	link: authLink.concat(httpLink),
 	cache: new InMemoryCache(),
 });
-
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 function App() {
 	return (
