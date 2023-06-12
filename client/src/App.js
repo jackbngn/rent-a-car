@@ -64,20 +64,11 @@ function App() {
 						<Route path="/login" element={<Login />} />
 						<Route path="/success" element={<Success />} />
 						<Route path="/checkout/success" element={<SuccessPage />} />
-						<Route path="/checkout/*" element={<CheckoutWithElements />} />
 					</Routes>
 					<Footer />
 				</div>
 			</Router>
 		</ApolloProvider>
-	);
-}
-
-function CheckoutWithElements() {
-	return (
-		<Elements stripe={stripePromise}>
-			<StripeCheckout />
-		</Elements>
 	);
 }
 

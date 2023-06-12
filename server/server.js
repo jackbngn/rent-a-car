@@ -27,6 +27,15 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 //
+const successUrl =
+	process.env.NODE_ENV === 'production'
+		? 'https://fleet-rental.herokuapp.com/checkout/success'
+		: 'http://localhost:3000/checkout/success';
+
+const cancelUrl =
+	process.env.NODE_ENV === 'production'
+		? 'https://fleet-rental.herokuapp.com/'
+		: 'http://localhost:3000/';
 // Stripe api to create checkout session
 app.post('/create-checkout-session', async (req, res) => {
 	const { carType, quantity } = req.body;
@@ -45,8 +54,8 @@ app.post('/create-checkout-session', async (req, res) => {
 				shipping_address_collection: {
 					allowed_countries: ['US'],
 				},
-				success_url: 'http://localhost:3000/chekcout/success',
-				cancel_url: 'http://localhost:3000/',
+				success_url: successUrl,
+				cancel_url: cancelUrl,
 			},
 			{
 				apiKey: process.env.STRIPE_SECRET_KEY,
