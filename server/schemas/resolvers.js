@@ -16,18 +16,6 @@ const resolvers = {
 				return user;
 			}
 			throw new AuthenticationError('You need to be logged in to access this.');
-<<<<<<< HEAD
-		},
-		getAllUsers: async () => {
-			try {
-				const users = await User.find();
-				return users;
-			} catch (error) {
-				console.error(error);
-				throw new Error('Failed to fetch users from the database');
-			}
-=======
->>>>>>> 34fb45cd4e12701f44cbbaeffc2649fbb64ac23b
 		},
 		vehicles: async () => {
 			try {
