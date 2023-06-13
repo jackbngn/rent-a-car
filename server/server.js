@@ -13,13 +13,13 @@ dotenv.config({ path: '../.env' });
 
 // Initialize Stripe with the appropriate secret key based on the environment
 const stripeSecretConfig = {
-	development: process.env.STRIPE_SECRET_KEY_TEST,
+	// development: process.env.STRIPE_SECRET_KEY_TEST,
 	production: process.env.STRIPE_SECRET_KEY_TEST, // Use testing key in production
 };
 
 // Initialize Stripe with the appropriate public key based on the environment
 const stripePublicConfig = {
-	development: process.env.STRIPE_PUBLIC_KEY_TEST,
+	// development: process.env.STRIPE_PUBLIC_KEY_TEST,
 	production: process.env.STRIPE_PUBLIC_KEY_TEST, // Use testing key in production
 };
 
