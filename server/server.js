@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 
 // Route for the checkout page
 app.get('/checkout', (req, res) => {
-	res.redirect('/checkout');
+	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 // URLs for success and cancel pages
