@@ -57,7 +57,7 @@ function App() {
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/login" element={<Login />} />
 						<Route path="/success" element={<Success />} />
-						<Route path="/checkout/success" element={<SuccessPage />} />
+						<Route path="/checkout/completed" element={<SuccessPage />} />
 					</Routes>
 					<Footer />
 				</div>

@@ -51,8 +51,8 @@ app.get('/', (req, res) => {
 // URLs for success and cancel pages
 const successUrl =
 	process.env.NODE_ENV === 'production'
-		? 'https://fleet-rental.herokuapp.com/checkout/success'
-		: 'http://localhost:3000/checkout/success';
+		? 'https://fleet-rental.herokuapp.com/checkout/completed'
+		: 'http://localhost:3000/checkout/completed';
 
 const cancelUrl =
 	process.env.NODE_ENV === 'production'
