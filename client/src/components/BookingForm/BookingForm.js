@@ -7,17 +7,15 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 import './BookForm.css';
-// import Modal from '../Modal/Modal';
 
 export default function BookingForm() {
-	// const [isModalOpen, setIsModalOpen] = useState(false);
-
 	const navigate = useNavigate();
 	const [selectedData, setSelectedData] = useState({
 		carType: '',
 		dropOffDate: '',
 		returnDate: '',
 	});
+	const [formErrors, setFormErrors] = useState({});
 
 	const handleInputChange = (event) => {
 		const { name, value } = event.target;
@@ -25,19 +23,30 @@ export default function BookingForm() {
 			...prevData,
 			[name]: value,
 		}));
+		setFormErrors((prevErrors) => ({
+			...prevErrors,
+			[name]: '',
+		}));
 	};
 
-	// const handleOpenModal = () => {
-	// 	document.body.classList.add('noScroll');
-	// 	setIsModalOpen(true);
-	// };
-
-	// const handleCloseModal = () => {
-	// 	document.body.classList.remove('noScroll');
-	// 	setIsModalOpen(false);
-	// };
-
 	const redirectToCheckout = async () => {
+		const errors = {};
+
+		if (!selectedData.carType) {
+			errors.carType = 'Please select a car type.';
+		}
+		if (!selectedData.dropOffDate) {
+			errors.dropOffDate = 'Please enter the drop-off date.';
+		}
+		if (!selectedData.returnDate) {
+			errors.returnDate = 'Please enter the return date.';
+		}
+
+		if (Object.keys(errors).length > 0) {
+			setFormErrors(errors);
+			return;
+		}
+
 		console.log('clicked');
 		const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -106,7 +115,9 @@ export default function BookingForm() {
 							<p className="text-blue-300">Select your car type *</p>
 						</label>
 						<select
-							className="carType border p-2 w-full md:w-64 lg:w-64"
+							className={`carType border p-2 w-full md:w-64 lg:w-64 ${
+								formErrors.carType ? 'border-red-500' : ''
+							}`}
 							name="carType"
 							value={selectedData.carType}
 							onChange={handleInputChange}
@@ -126,6 +137,9 @@ export default function BookingForm() {
 									</option>
 								))}
 						</select>
+						{formErrors.carType && (
+							<p className="text-red-500">{formErrors.carType}</p>
+						)}
 					</div>
 
 					<div className="mr-0 md:mr-10 lg:mr-10 mb-4 md:mb-0 lg:mb-0">
@@ -135,12 +149,17 @@ export default function BookingForm() {
 						</label>
 						<input
 							type="date"
-							className="border p-2 w-full md:w-64 lg:w-64"
+							className={`border p-2 w-full md:w-64 lg:w-64 ${
+								formErrors.dropOffDate ? 'border-red-500' : ''
+							}`}
 							name="dropOffDate"
 							value={selectedData.dropOffDate}
 							onChange={handleInputChange}
 							required
 						/>
+						{formErrors.dropOffDate && (
+							<p className="text-red-500">{formErrors.dropOffDate}</p>
+						)}
 					</div>
 
 					<div className="mr-0 md:mr-10 lg:mr-10 mb-4 md:mb-0 lg:mb-0 ">
@@ -150,12 +169,17 @@ export default function BookingForm() {
 						</label>
 						<input
 							type="date"
-							className="border p-2 w-full md:w-64 lg:w-64"
+							className={`border p-2 w-full md:w-64 lg:w-64 ${
+								formErrors.returnDate ? 'border-red-500' : ''
+							}`}
 							name="returnDate"
 							value={selectedData.returnDate}
 							onChange={handleInputChange}
 							required
 						/>
+						{formErrors.returnDate && (
+							<p className="text-red-500">{formErrors.returnDate}</p>
+						)}
 					</div>
 
 					<div className="mt-2 md:mt-8 lg:mt-8 mr-10 sm:mr-0 md:mr-10">
@@ -168,13 +192,6 @@ export default function BookingForm() {
 					</div>
 				</form>
 			</div>
-
-			{/* <Modal
-				isOpen={isModalOpen}
-				onClose={handleCloseModal}
-				selectedData={selectedData}
-				carData={carData}
-			/> */}
 		</div>
 	);
 }
