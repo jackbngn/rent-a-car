@@ -6,20 +6,23 @@ const dotenv = require('dotenv');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const { authMiddleware } = require('./utils/auth');
+const { development } = require('./config/config');
 
 // Load environment variables from .env file
 dotenv.config({ path: '../.env' });
 
 // Initialize Stripe with the appropriate secret key based on the environment
 const stripeSecretConfig = {
-	development: process.env.STRIPE_SECRET_KEY_TEST,
-	production: process.env.STRIPE_SECRET_KEY_LIVE,
+	// development: process.env.STRIPE_SECRET_KEY_TEST,
+	production: process.env.STRIPE_SECRET_KEY_TEST, // Use testing key in production
 };
-// Initialize Stripe with the appropriate public key based on the enviorment
+
+// Initialize Stripe with the appropriate public key based on the environment
 const stripePublicConfig = {
-	development: process.env.STRIPE_PUBLIC_KEY_TEST,
-	production: process.env.STRIPE_PUBLIC_KEY_LIVE,
+	// development: process.env.STRIPE_PUBLIC_KEY_TEST,
+	production: process.env.STRIPE_PUBLIC_KEY_TEST, // Use testing key in production
 };
+
 const stripe = new Stripe(
 	stripeSecretConfig[process.env.NODE_ENV || 'development'],
 );
@@ -45,11 +48,16 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+// Route for the checkout page
+app.get('/checkout', (req, res) => {
+	res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
 // URLs for success and cancel pages
 const successUrl =
 	process.env.NODE_ENV === 'production'
-		? 'https://fleet-rental.herokuapp.com/checkout/success'
-		: 'http://localhost:3000/checkout/success';
+		? 'https://fleet-rental.herokuapp.com/checkout'
+		: 'http://localhost:3000/checkout';
 
 const cancelUrl =
 	process.env.NODE_ENV === 'production'
