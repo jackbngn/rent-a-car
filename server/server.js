@@ -48,6 +48,11 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+// Route for the checkout page
+app.get('/checkout', (req, res) => {
+	res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
 // URLs for success and cancel pages
 const successUrl =
 	process.env.NODE_ENV === 'production'
