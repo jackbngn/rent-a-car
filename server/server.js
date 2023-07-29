@@ -13,15 +13,23 @@ dotenv.config({ path: '../.env' });
 
 // Initialize Stripe with the appropriate secret key based on the environment
 const stripeSecretConfig = {
-	// development: process.env.STRIPE_SECRET_KEY_TEST,
+	development: process.env.STRIPE_SECRET_KEY_TEST,
 	production: process.env.STRIPE_SECRET_KEY_TEST, // Use testing key in production
 };
 
 // Initialize Stripe with the appropriate public key based on the environment
 const stripePublicConfig = {
-	// development: process.env.STRIPE_PUBLIC_KEY_TEST,
+	development: process.env.STRIPE_PUBLIC_KEY_TEST,
 	production: process.env.STRIPE_PUBLIC_KEY_TEST, // Use testing key in production
 };
+// Check if the environment is in production mode
+if (process.env.NODE_ENV === 'production') {
+	// Production-specific code here
+	console.log('Running in production mode');
+} else {
+	// Development-specific code here
+	console.log('Running in development mode');
+}
 
 const stripe = new Stripe(
 	stripeSecretConfig[process.env.NODE_ENV || 'development'],

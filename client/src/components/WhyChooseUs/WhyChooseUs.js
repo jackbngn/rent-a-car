@@ -15,7 +15,7 @@ export default function WhyChooseUs() {
 				</h1>
 				<div className="whyChooseUsItem">
 					<div className="whyChooseUsImage">
-						<img src={Image1} alt="Image 1" />
+						<img src={Image1} alt="Car driving" />
 					</div>
 					<div className="whyChooseUsText">
 						<p>
@@ -37,12 +37,15 @@ export default function WhyChooseUs() {
 						</Link>
 					</div>
 					<div className="whyChooseUsImage">
-						<img src={Image3} alt="Image 2" />
+						<img src={Image3} alt="Steering wheel" />
 					</div>
 				</div>
 				<div className="whyChooseUsItem">
 					<div className="whyChooseUsImage">
-						<img src={Image2} alt="Image 3" />
+						<img
+							src={Image2}
+							alt="hand moving through the air outside of car"
+						/>
 					</div>
 					<div className="whyChooseUsText">
 						<p>
